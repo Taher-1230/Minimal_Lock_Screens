@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:20px
+}
+.card{
+  background:#0b0b0b;border:1px solid #222;
+  border-radius:20px;padding:24px;
+  max-width:380px;width:100%;text-align:center
+}
+h2{margin-bottom:6px}
+p{color:#aaa;font-size:14px}
+.amount{font-size:28px;font-weight:700;margin:14px 0}
+.qr{background:#111;border-radius:16px;padding:16px;margin:16px 0}
+.qr img{width:100%;max-width:220px}
+.whatsapp{
+  display:inline-block;margin-top:14px;
+  background:#25D366;color:#000;
+  padding:12px 18px;border-radius:14px;
+  font-weight:600;font-size:14px
+}
+.back{display:block;margin-top:14px;font-size:13px;color:#aaa}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2 id="plan">Loading…</h2>
+  <p>Pay using UPI / Paytm</p>
+
+  <div class="amount">₹<span id="price">0</span></div>
+
+  <div class="qr">
+    <img id="qrImg">
+  </div>
+
+  <a id="wa" class="whatsapp">I have paid – Send screenshot</a>
+  <a href="index.html" class="back">← Back</a>
+</div>
+
+<script>
+/* 🔴 CHANGE THESE */
+const UPI_ID = "taher.sadabar19@oksbi";
+const PAYEE = "Minimal Lock Screens";
+const WHATSAPP = "916354481810";
+
+/* Get params */
+const params = new URLSearchParams(location.search);
+const plan = params.get("plan");
+const price = params.get("price");
+
+/* Set UI */
+document.getElementById("plan").textContent = plan;
+document.getElementById("price").textContent = price;
+
+/* UPI link */
+const upi =
+  `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(PAYEE)}&am=${price}&cu=INR`;
+
+/* QR generation */
+document.getElementById("qrImg").src =
+  `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upi)}`;
+
+/* WhatsApp */
+document.getElementById("wa").href =
+  `https://wa.me/${WHATSAPP}?text=` +
+  encodeURIComponent(
+    `Hi, I have paid ₹${price} for the layout "${plan}". Here is the payment screenshot.`
+  );
+</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimal Lock Screens</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;color:#f5f5f5;line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+
+header{
+  position:sticky;top:0;z-index:10;
+  background:#000;border-bottom:1px solid #222;
+  padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center
+}
+header h1{font-size:18px;font-weight:600}
+nav a{margin-left:14px;font-size:13px;color:#aaa}
+nav a:hover{color:#fff}
+
+section{padding:50px 16px}
+.container{max-width:1100px;margin:auto}
+
+.hero{text-align:center;padding:60px 16px}
+.hero h2{font-size:28px;margin-bottom:12px}
+.hero p{font-size:14px;color:#aaa;max-width:520px;margin:0 auto 22px}
+
+.btn{
+  display:inline-block;background:#fff;color:#000;
+  padding:12px 22px;border-radius:14px;
+  font-weight:600;font-size:14px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px
+}
+
+.card{
+  background:#0b0b0b;border:1px solid #222;
+  border-radius:18px;padding:14px
+}
+
+.preview{
+  height:420px;border-radius:18px;
+  background:#111;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:12px
+}
+.preview img{height:100%;width:auto;object-fit:contain}
+
+.card h3{font-size:15px}
+.card p{font-size:13px;color:#aaa}
+
+.price{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-top:12px
+}
+.buy{
+  background:#fff;color:#000;
+  padding:6px 14px;border-radius:12px;
+  font-size:13px;cursor:pointer
+}
+
+.bundle{border:1px dashed #333;background:#080808}
+
+footer{
+  padding:30px 16px;border-top:1px solid #222;
+  font-size:12px;color:#777;text-align:center
+}
+
+@media(min-width:768px){
+  .hero h2{font-size:34px}
+  .preview{height:360px}
+}
+.faq-item{
+  border-bottom:1px solid #222;
+  padding:12px 0;
+  cursor:pointer
+}
+.faq-q{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px
+}
+.faq-a{
+  display:none;
+  margin-top:6px;
+  font-size:13px;
+  color:#aaa
+}
+.faq-item.active .faq-a{
+  display:block
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Minimal Lock Screens</h1>
+  <nav>
+    <a href="#layouts">Layouts</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Minimal iOS Lock Screen Layouts</h2>
+  <p>
+    Clean calendar layouts for <strong>iPhone</strong> lock screens.<br>
+    Dots, numbers, colors — distraction free.<br><br>
+    <span style="color:#ff6b6b;font-size:13px">
+      ⚠️ iPhone only. Android is not supported.
+    </span>
+  </p>
+  <a class="btn" href="#layouts">View layouts (₹19–₹139)</a>
+</section>
+
+<section id="layouts">
+<div class="container">
+<h2 style="margin-bottom:20px">Available Layouts</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="preview"><img src="ss1.jpg"></div>
+<h3>Dots – Dark</h3>
+<p>Basic minimal layout · Perfect to try</p>
+<div class="price">
+<span>₹19</span>
+<span class="buy" onclick="goToPay('Dots – Dark',19)">Buy</span>
+</div>
+</div>
+
+<div class="card">
+<div class="preview"><img src="ss2.jpg"></div>
+<h3>Numbers – Subtle</h3>
+<p><strong>Most popular</strong> · Balanced design</p>
+<div class="price">
+<span>₹29</span>
+<span class="buy" onclick="goToPay('Numbers – Subtle',29)">Buy</span>
+</div>
+</div>
+
+<div class="card bundle">
+<div class="preview"><img src="ss3.jpg"></div>
+<h3>Premium Green</h3>
+<p><strong>Premium</strong> · High contrast visibility</p>
+<div class="price">
+<span>₹139</span>
+<span class="buy" onclick="goToPay('Premium Green',139)">Buy</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2 style="margin-bottom:16px">FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Is this an app?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        No. This is a lock screen layout + setup guide.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Which phones are supported?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        iPhone only. Android is not supported.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        How do I use this?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        You apply it using the free Scriptable app on iOS.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        What do I receive after payment?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        A setup guide and layout assets via WhatsApp or Drive.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Is this safe?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        Yes. No personal data is collected.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Refund available?
+        <span>+</span>
+      </div>
+      <div class="faq-a">
+        Digital products are non-refundable.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+<p>
+Based on open-source project
+<a href="https://github.com/agaragou/LockScreen-Calendar-ShortCut" target="_blank">
+LockScreen-Calendar-ShortCut by agaragou
+</a>
+</p>
+<p>This site sells layouts & setup guidance only.</p>
+</footer>
+
+<script>
+function goToPay(plan, price){
+  window.location.href =
+    `payment.html?plan=${encodeURIComponent(plan)}&price=${price}`;
+}
+
+</script>
+<script>
+document.querySelectorAll(".faq-item").forEach(item=>{
+  item.onclick=()=>item.classList.toggle("active")
+})
+</script>
+
+
+</body>
+</html>
