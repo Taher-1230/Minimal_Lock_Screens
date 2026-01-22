@@ -9,7 +9,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:#000;color:#f5f5f5;line-height:1.6
+  background:#000;color:#f5f5f5;
+  line-height:1.6
 }
 a{text-decoration:none;color:inherit}
 
@@ -19,66 +20,111 @@ header{
   padding:14px 16px;
   display:flex;justify-content:space-between;align-items:center
 }
-header h1{font-size:18px;font-weight:600}
-nav a{margin-left:14px;font-size:13px;color:#aaa}
+header h1{font-size:17px;font-weight:600}
+nav a{margin-left:12px;font-size:12px;color:#aaa}
 nav a:hover{color:#fff}
 
-section{padding:50px 16px}
-.container{max-width:1100px;margin:auto}
+section{padding:40px 14px}
+.container{max-width:1200px;margin:auto}
 
-.hero{text-align:center;padding:60px 16px}
-.hero h2{font-size:28px;margin-bottom:12px}
-.hero p{font-size:14px;color:#aaa;max-width:520px;margin:0 auto 22px}
+.hero{text-align:center;padding:50px 14px}
+.hero h2{font-size:26px;margin-bottom:10px}
+.hero p{
+  font-size:13px;color:#aaa;
+  max-width:560px;margin:0 auto 20px
+}
 
 .btn{
-  display:inline-block;background:#fff;color:#000;
-  padding:12px 22px;border-radius:14px;
+  display:inline-block;
+  background:#fff;color:#000;
+  padding:12px 24px;
+  border-radius:16px;
   font-weight:600;font-size:14px
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px
+/* Carousel */
+.carousel-wrapper{
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  display:flex;
+  gap:14px;
+  padding-bottom:6px;
+  -webkit-overflow-scrolling:touch
 }
+.carousel-wrapper::-webkit-scrollbar{display:none}
 
-.card{
+.pack-card{
+  min-width:250px;
+  scroll-snap-align:start;
   background:#0b0b0b;border:1px solid #222;
-  border-radius:18px;padding:14px
+  border-radius:18px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.25s
 }
+.pack-card:active{transform:scale(0.98)}
 
-.preview{
-  height:420px;border-radius:18px;
-  background:#111;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+.pack-card h3{font-size:15px;margin-bottom:6px}
+.pack-card p{font-size:12.5px;color:#aaa;margin-bottom:10px}
+
+.features{
+  font-size:12.5px;
+  color:#ccc;
   margin-bottom:12px
 }
-.preview img{height:100%;width:auto;object-fit:contain}
-
-.card h3{font-size:15px}
-.card p{font-size:13px;color:#aaa}
+.features li{margin-bottom:6px}
 
 .price{
-  display:flex;justify-content:space-between;
-  align-items:center;margin-top:12px
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px
 }
 .buy{
-  background:#fff;color:#000;
-  padding:6px 14px;border-radius:12px;
-  font-size:13px;cursor:pointer
+  background:#fff;
+  color:#000;
+  padding:10px 16px;
+  border-radius:14px;
+  font-size:13px;
+  cursor:pointer;
+  font-weight:600
 }
 
-.bundle{border:1px dashed #333;background:#080808}
-
-footer{
-  padding:30px 16px;border-top:1px solid #222;
-  font-size:12px;color:#777;text-align:center
+.featured{
+  border:1px solid #ffd166;
+  box-shadow:0 0 20px rgba(255,209,102,0.12)
 }
 
-@media(min-width:768px){
-  .hero h2{font-size:34px}
-  .preview{height:360px}
+/* Testimonials */
+.testimonial-wrap{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch
 }
+.testimonial-wrap::-webkit-scrollbar{display:none}
+
+.test-card{
+  min-width:260px;
+  scroll-snap-align:start;
+  background:#0b0b0b;
+  border:1px solid #222;
+  border-radius:16px;
+  padding:14px;
+  font-size:13px;
+  color:#ddd
+}
+.test-card span{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  color:#888
+}
+
+/* FAQ */
 .faq-item{
   border-bottom:1px solid #222;
   padding:12px 0;
@@ -95,10 +141,23 @@ footer{
   font-size:13px;
   color:#aaa
 }
-.faq-item.active .faq-a{
-  display:block
+.faq-item.active .faq-a{display:block}
+
+footer{
+  padding:26px 14px;
+  border-top:1px solid #222;
+  font-size:11.5px;
+  color:#777;
+  text-align:center
 }
 
+/* Desktop enhancements */
+@media(min-width:768px){
+  .hero h2{font-size:34px}
+  .pack-card{min-width:300px}
+  .carousel-wrapper{gap:18px}
+  .test-card{min-width:320px}
+}
 </style>
 </head>
 
@@ -107,56 +166,154 @@ footer{
 <header>
   <h1>Minimal Lock Screens</h1>
   <nav>
-    <a href="#layouts">Layouts</a>
+    <a href="#packs">Packs</a>
+    <a href="#testimonials">Reviews</a>
     <a href="#faq">FAQ</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h2>Minimal iOS Lock Screen Layouts</h2>
+  <h2>Premium iOS Lock Screen Packs</h2>
   <p>
-    Clean calendar layouts for <strong>iPhone</strong> lock screens.<br>
-    Dots, numbers, colors — distraction free.<br><br>
-    <span style="color:#ff6b6b;font-size:13px">
-      ⚠️ iPhone only. Android is not supported.
+    Modular lock screen systems for <strong>iPhone</strong> users.<br>
+    Choose your style: productivity, religion, romance, study, minimal, or festivals.<br><br>
+    <span style="color:#ff6b6b;font-size:12.5px">
+      ⚠️ iPhone only · Android not supported
     </span>
   </p>
-  <a class="btn" href="#layouts">View layouts (₹19–₹139)</a>
+  <a class="btn" href="#packs">Explore Packs</a>
 </section>
 
-<section id="layouts">
+<!-- PACKS -->
+<section id="packs">
 <div class="container">
-<h2 style="margin-bottom:20px">Available Layouts</h2>
+<h2 style="margin-bottom:14px;font-size:18px">Swipe to Explore Packs →</h2>
 
-<div class="grid">
+<div class="carousel-wrapper" id="carousel">
 
-<div class="card">
-<div class="preview"><img src="ss1.jpg"></div>
-<h3>Dots – Dark</h3>
-<p>Basic minimal layout · Perfect to try</p>
+<div class="pack-card">
+<h3>Dot Mode Pack</h3>
+<p>Pure minimalism · No numbers · No clutter</p>
+<ul class="features">
+<li>• Dot-based calendar</li>
+<li>• Ultra-minimal look</li>
+<li>• Clean aesthetic</li>
+</ul>
 <div class="price">
 <span>₹19</span>
-<span class="buy" onclick="goToPay('Dots – Dark',19)">Buy</span>
+<span class="buy" onclick="goToPay('Dot Mode Pack',19)">Buy</span>
 </div>
 </div>
 
-<div class="card">
-<div class="preview"><img src="ss2.jpg"></div>
-<h3>Numbers – Subtle</h3>
-<p><strong>Most popular</strong> · Balanced design</p>
+<div class="pack-card">
+<h3>Classic Calendar Pack</h3>
+<p>Traditional calendar with modern UI</p>
+<ul class="features">
+<li>• Number calendar</li>
+<li>• Pastel themes</li>
+<li>• Daily usability</li>
+</ul>
 <div class="price">
 <span>₹29</span>
-<span class="buy" onclick="goToPay('Numbers – Subtle',29)">Buy</span>
+<span class="buy" onclick="goToPay('Classic Calendar Pack',29)">Buy</span>
 </div>
 </div>
 
-<div class="card bundle">
-<div class="preview"><img src="ss3.jpg"></div>
-<h3>Premium Green</h3>
-<p><strong>Premium</strong> · High contrast visibility</p>
+<div class="pack-card featured">
+<h3>Apple Calendar Sync</h3>
+<p>Auto sync with iOS calendar</p>
+<ul class="features">
+<li>• iOS integration</li>
+<li>• Event highlights</li>
+<li>• Productivity focus</li>
+</ul>
 <div class="price">
-<span>₹139</span>
-<span class="buy" onclick="goToPay('Premium Green',139)">Buy</span>
+<span>₹49</span>
+<span class="buy" onclick="goToPay('Apple Calendar Sync Pack',49)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card">
+<h3>Custom Events Pack</h3>
+<p>Add your own important dates</p>
+<ul class="features">
+<li>• Manual event adding</li>
+<li>• Birthdays, exams</li>
+<li>• Custom highlights</li>
+</ul>
+<div class="price">
+<span>₹39</span>
+<span class="buy" onclick="goToPay('Custom Events Pack',39)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card">
+<h3>Ramadan Mode Pack</h3>
+<p>Spiritual Islamic layout</p>
+<ul class="features">
+<li>• Ramadan calendar</li>
+<li>• Suhoor/Iftar focus</li>
+<li>• Calm colors</li>
+</ul>
+<div class="price">
+<span>₹29</span>
+<span class="buy" onclick="goToPay('Ramadan Mode Pack',29)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card featured">
+<h3>Festival Mode Pack</h3>
+<p>Only festivals highlighted</p>
+<ul class="features">
+<li>• Festival-only view</li>
+<li>• Golden highlights</li>
+<li>• Premium look</li>
+</ul>
+<div class="price">
+<span>₹39</span>
+<span class="buy" onclick="goToPay('Festival Mode Pack',39)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card">
+<h3>Student Pack</h3>
+<p>Academic productivity layout</p>
+<ul class="features">
+<li>• Exam tracking</li>
+<li>• Study reminders</li>
+<li>• Academic focus</li>
+</ul>
+<div class="price">
+<span>₹19</span>
+<span class="buy" onclick="goToPay('Student Pack',19)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card featured">
+<h3>Productivity Pack</h3>
+<p>Focus-driven daily system</p>
+<ul class="features">
+<li>• Task mindset</li>
+<li>• Clean layout</li>
+<li>• Focus aesthetics</li>
+</ul>
+<div class="price">
+<span>₹59</span>
+<span class="buy" onclick="goToPay('Productivity Pack',59)">Buy</span>
+</div>
+</div>
+
+<div class="pack-card">
+<h3>Couple Pack</h3>
+<p>Romantic shared layout</p>
+<ul class="features">
+<li>• Anniversary tracking</li>
+<li>• Special dates</li>
+<li>• Soft romantic colors</li>
+</ul>
+<div class="price">
+<span>₹49</span>
+<span class="buy" onclick="goToPay('Couple Pack',49)">Buy</span>
 </div>
 </div>
 
@@ -164,74 +321,35 @@ footer{
 </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+<div class="container">
+<h2 style="margin-bottom:12px;font-size:18px">What Users Say</h2>
+
+<div class="testimonial-wrap">
+  <div class="test-card">“My lock screen finally feels clean and premium.” <span>— Armaan, iPhone 14</span></div>
+  <div class="test-card">“Festival mode looks insane. Super aesthetic.” <span>— Riya, iPhone 13</span></div>
+  <div class="test-card">“Productivity pack changed my daily flow.” <span>— Zaid, Student</span></div>
+  <div class="test-card">“Worth every rupee honestly.” <span>— Ayaan, Freelancer</span></div>
+  <div class="test-card">“Ramadan mode feels peaceful.” <span>— Hamza, Mumbai</span></div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
 <section id="faq">
-  <div class="container">
-    <h2 style="margin-bottom:16px">FAQ</h2>
+<div class="container">
+<h2 style="margin-bottom:12px;font-size:18px">FAQ</h2>
 
-    <div class="faq-item">
-      <div class="faq-q">
-        Is this an app?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        No. This is a lock screen layout + setup guide.
-      </div>
-    </div>
+<div class="faq-item"><div class="faq-q">Is this an app? <span>+</span></div><div class="faq-a">No. It uses Scriptable on iOS.</div></div>
+<div class="faq-item"><div class="faq-q">Does it work on Android? <span>+</span></div><div class="faq-a">No. iPhone only.</div></div>
+<div class="faq-item"><div class="faq-q">What do I receive after payment? <span>+</span></div><div class="faq-a">Setup guides, layouts, configuration files.</div></div>
+<div class="faq-item"><div class="faq-q">How will I get the files? <span>+</span></div><div class="faq-a">Via WhatsApp or Google Drive.</div></div>
+<div class="faq-item"><div class="faq-q">Is coding required? <span>+</span></div><div class="faq-a">No. Fully guided setup.</div></div>
+<div class="faq-item"><div class="faq-q">Refund policy? <span>+</span></div><div class="faq-a">Digital products are non-refundable.</div></div>
 
-    <div class="faq-item">
-      <div class="faq-q">
-        Which phones are supported?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        iPhone only. Android is not supported.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">
-        How do I use this?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        You apply it using the free Scriptable app on iOS.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">
-        What do I receive after payment?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        A setup guide and layout assets via WhatsApp or Drive.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">
-        Is this safe?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        Yes. No personal data is collected.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">
-        Refund available?
-        <span>+</span>
-      </div>
-      <div class="faq-a">
-        Digital products are non-refundable.
-      </div>
-    </div>
-
-  </div>
+</div>
 </section>
-
-
 
 <footer>
 <p>
@@ -241,6 +359,7 @@ LockScreen-Calendar-ShortCut by agaragou
 </a>
 </p>
 <p>This site sells layouts & setup guidance only.</p>
+<p>iPhone only • Works using Scriptable • Not an app</p>
 </footer>
 
 <script>
@@ -249,13 +368,32 @@ function goToPay(plan, price){
     `payment.html?plan=${encodeURIComponent(plan)}&price=${price}`;
 }
 
-</script>
-<script>
+/* Desktop drag scroll */
+const slider = document.getElementById("carousel");
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener("mouseleave", () => isDown = false);
+slider.addEventListener("mouseup", () => isDown = false);
+slider.addEventListener("mousemove", (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.2;
+  slider.scrollLeft = scrollLeft - walk;
+});
+
+/* FAQ toggle */
 document.querySelectorAll(".faq-item").forEach(item=>{
   item.onclick=()=>item.classList.toggle("active")
 })
 </script>
-
 
 </body>
 </html>
